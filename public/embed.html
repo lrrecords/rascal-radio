@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--HEAD-->
+  <title>Rascal Radio player</title>
+  <link rel="stylesheet" href="/css/app.css">
+  <style>
+    html, body { height: 100%; }
+    body { padding: 0; overflow: hidden; background: var(--bg); }
+    .embed { height: 100%; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+    .e-head { display: flex; gap: 12px; align-items: center; padding: 12px; border-bottom: 1px solid var(--line); }
+    .e-head .collage { width: 72px; flex: none; border-radius: 8px; }
+    .e-head .t { min-width: 0; flex: 1; }
+    .e-head h1 { font-size: 1.2rem; margin: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .e-head .kicker { font-size: .7rem; color: var(--accent); text-transform: uppercase; letter-spacing: .12em; font-weight: 700; }
+    .e-list { flex: 1; overflow: auto; }
+    .e-list .tracklist { border-top: 0; margin: 0; }
+    .e-list .track { padding: 8px 12px; grid-template-columns: 22px 40px 1fr auto; }
+    .e-list .track .art-btn { width: 40px; height: 40px; }
+    .rp.mode-full, .rp.mode-compact { position: relative; border-top: 1px solid var(--line); }
+    .rp.mode-full .rp-inner, .rp.mode-compact .rp-inner { padding: 8px 12px; }
+    .rp.mode-full .rp-yt { position: static; margin: 0 auto 8px; }
+    .rp.mode-full:not([hidden]) { display: flex; flex-direction: column-reverse; }
+    .brandlink { font-size: .75rem; color: var(--muted); text-decoration: none; white-space: nowrap; }
+    /* Compact: 152px tall total */
+    .compact .embed { flex-direction: row; }
+    .compact .c-art { width: 150px; height: 150px; flex: none; object-fit: cover; background: var(--surface-2); }
+    .compact .c-main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+    .compact .c-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 12px 0; }
+    .compact .c-top .show { font-size: .72rem; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .compact .rp { border-top: 0; background: transparent; flex: 1; }
+    .compact .rp-inner { gap: 4px; padding: 4px 12px 8px; }
+    .compact .rp-bar { grid-template-columns: 1fr auto; }
+    .compact .rp-art { display: none; }
+    .compact .rp-status { font-size: .72rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; }
+    .compact .start { position: absolute; inset: 0; }
+    @media (max-width: 380px) { .compact .c-art { width: 96px; height: 150px; } }
+  </style>
+</head>
+<body>
+  <div class="embed" id="embed"><p class="muted" style="padding:12px">Loading…</p></div>
+  <script type="module" src="/js/embed.js"></script>
+</body>
+</html>
