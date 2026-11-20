@@ -7,9 +7,9 @@ compatibility_date = "2025-01-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "rascal_radio"
-# Replace with the id printed by `npx wrangler d1 create rascal_radio` (see README).
-# Local dev works with the placeholder.
-database_id = "00000000-0000-0000-0000-000000000000"
+# Created 20 Nov 2026 (Oceania). Schema 0001_init.sql applied to production.
+
+database_id = "07012ece-f8e7-48a5-b615-1c6652dd315f"
 migrations_dir = "migrations"
 
 [vars]
