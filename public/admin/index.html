@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Admin · Rascal Radio</title>
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <header class="site-head"><div class="wrap">
+    <a class="brand" href="/admin"><span class="brand-mark" aria-hidden="true">RR</span><span><span class="brand-name">Rascal Radio</span><span class="brand-sub">Admin</span></span></a>
+    <nav class="btn-row"><a class="btn btn-sm" href="/admin/import">Import crate</a><a class="btn btn-sm btn-ghost" href="/" target="_blank">Site ↗</a></nav>
+  </div></header>
+
+  <main class="wrap admin">
+    <aside class="show-list">
+      <button type="button" class="btn btn-primary" id="new-show" style="width:100%">+ New show</button>
+      <ul id="shows"></ul>
+    </aside>
+
+    <section id="editor" class="editor">
+      <form id="show-form" autocomplete="off">
+        <div class="ed-head">
+          <h1 id="ed-title">New show</h1>
+          <span class="pill" id="status-pill">draft</span>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="f-title">Title</label><input id="f-title" name="title" required placeholder="Rascal Radio - Nov 26"></div>
+          <div class="field"><label for="f-slug">Slug (URL /s/…)</label><input id="f-slug" name="slug" placeholder="auto from title" pattern="[a-z0-9-]*"></div>
+          <div class="field"><label for="f-ep">Episode no.</label><input id="f-ep" name="episode_no" type="number" min="0" inputmode="numeric"></div>
+          <div class="field"><label for="f-date">Air date</label><input id="f-date" name="air_date" type="date"></div>
+          <div class="field"><label for="f-blast">Blast Radio URL</label><input id="f-blast" name="blast_url" type="url" placeholder="https://"></div>
+          <div class="field"><label for="f-pod">Podcast URL</label><input id="f-pod" name="podcast_url" type="url" placeholder="https://"></div>
+        </div>
+        <div class="field"><label for="f-notes">Notes (shown on the public page)</label><textarea id="f-notes" name="notes" rows="2"></textarea></div>
+      </form>
+
+      <div class="panel">
+        <h2>Add tracks</h2>
+        <div class="field">
+          <label for="links">Paste Bandcamp or YouTube links, one per line</label>
+          <textarea id="links" rows="4" placeholder="https://artist.bandcamp.com/track/song&#10;https://www.youtube.com/watch?v=…"></textarea>
+        </div>
+        <button type="button" class="btn" id="resolve">Resolve &amp; add</button>
+        <ul id="resolve-log" class="log"></ul>
+      </div>
+
+      <div class="panel">
+        <div class="ed-head"><h2>Running order</h2><span class="muted small" id="total"></span></div>
+        <p class="muted small">Drag the ⠿ handle (or use ↑ ↓) to reorder. Title, artist and time edits save straight away; order and segment notes save with the show.</p>
+        <ol id="order" class="order"></ol>
+      </div>
+
+      <div class="savebar">
+        <span class="muted small" id="dirty"></span>
+        <div class="btn-row">
+          <button type="button" class="btn btn-ghost" id="delete" hidden>Delete</button>
+          <a class="btn btn-ghost" id="view" target="_blank" hidden>View ↗</a>
+          <button type="button" class="btn" id="save">Save draft</button>
+          <button type="button" class="btn btn-primary" id="publish">Publish</button>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="/js/admin.js"></script>
+</body>
+</html>

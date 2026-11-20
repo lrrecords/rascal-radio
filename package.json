@@ -1,0 +1,17 @@
+{
+  "name": "rascal-radio",
+  "private": true,
+  "description": "Rascal Radio playlist app — Cloudflare Pages + D1. No build step.",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler pages dev --port 8788",
+    "db:migrate:local": "wrangler d1 migrations apply rascal_radio --local",
+    "db:migrate:remote": "wrangler d1 migrations apply rascal_radio --remote",
+    "test": "node --test test/*.test.mjs",
+    "test:api": "node scripts/test-api.mjs",
+    "seed:test": "node scripts/seed-test.mjs"
+  },
+  "devDependencies": {
+    "wrangler": "^3.114.17"
+  }
+}

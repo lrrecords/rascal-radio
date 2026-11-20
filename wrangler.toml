@@ -1,0 +1,20 @@
+# Rascal Radio — Cloudflare Pages project config.
+# No secrets live here. The D1 database_id is an identifier, not a credential.
+name = "rascal-radio"
+pages_build_output_dir = "public"
+compatibility_date = "2025-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "rascal_radio"
+# Created 20 Nov 2026 (Oceania). Schema 0001_init.sql applied to production.
+
+database_id = "07012ece-f8e7-48a5-b615-1c6652dd315f"
+migrations_dir = "migrations"
+
+[vars]
+# Cloudflare Access (Zero Trust) settings used to verify admin requests.
+# Team domain, e.g. "lrrecords.cloudflareaccess.com". The AUD tag comes from the
+# Access application's Overview tab. Neither is a secret.
+ACCESS_TEAM_DOMAIN = ""
+ACCESS_AUD = ""

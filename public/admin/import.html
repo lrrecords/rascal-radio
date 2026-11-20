@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Import crate · Rascal Radio</title>
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+  <header class="site-head"><div class="wrap">
+    <a class="brand" href="/admin"><span class="brand-mark" aria-hidden="true">RR</span><span><span class="brand-name">Rascal Radio</span><span class="brand-sub">Admin</span></span></a>
+    <nav class="btn-row"><a class="btn btn-sm" href="/admin">Shows</a></nav>
+  </div></header>
+  <main class="wrap" style="max-width:720px">
+    <h1 style="margin-top:24px">Import an Indiecrates crate</h1>
+    <p class="muted">Paste a public crate URL. Each track row’s Bandcamp link is resolved and a <strong>draft</strong> show is created in the same order, titled from the crate.</p>
+    <form id="import-form" class="panel">
+      <div class="field">
+        <label for="crate-url">Crate URL</label>
+        <input id="crate-url" type="url" required placeholder="https://indiecrates.com/crates/lrrecords/rascal-radio-oct-26">
+      </div>
+      <button class="btn btn-primary" id="go">Import</button>
+    </form>
+    <div id="result"></div>
+    <ul id="log" class="log"></ul>
+  </main>
+  <script type="module" src="/js/import.js"></script>
+</body>
+</html>

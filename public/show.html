@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0a0a">
+  <!--HEAD-->
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <header class="site-head"><div class="wrap"><a class="brand" href="/"><span class="brand-mark" aria-hidden="true">RR</span><span><span class="brand-name">Rascal Radio</span><span class="brand-sub">Little Rascal Records</span></span></a><a class="btn btn-sm btn-ghost" href="https://lrrecords.com.au">lrrecords.com.au</a></div></header>
+  <main class="wrap" id="crate" aria-live="polite"><p class="muted" style="padding:32px 0">Loading…</p></main>
+  <footer class="site-foot"><div class="wrap">Rascal Radio by <a href="https://lrrecords.com.au">Little Rascal Records</a>. Music plays through the official Bandcamp and YouTube players — buy the music, support the artists.</div></footer>
+  <div id="player"></div>
+
+  <dialog id="share" aria-labelledby="share-title">
+    <div class="dialog-head">
+      <h2 id="share-title">Share this show</h2>
+      <button type="button" class="btn btn-icon btn-ghost" data-close aria-label="Close">✕</button>
+    </div>
+    <div class="share-grid" id="share-links"></div>
+    <div class="field">
+      <label for="share-url">Link</label>
+      <div class="copy-row"><input id="share-url" readonly><button type="button" class="btn" id="copy-link">Copy</button></div>
+    </div>
+    <div class="field">
+      <label for="embed-code">Embed player</label>
+      <div class="seg" role="group" aria-label="Embed size">
+        <button type="button" data-size="compact" aria-pressed="true">Compact</button>
+        <button type="button" data-size="full" aria-pressed="false">Full</button>
+      </div>
+      <div class="copy-row"><textarea id="embed-code" rows="3" readonly></textarea><button type="button" class="btn" id="copy-embed">Copy</button></div>
+      <a class="small" id="embed-preview" target="_blank" rel="noopener">Preview the embed ↗</a>
+    </div>
+  </dialog>
+  <script type="module" src="/js/show.js"></script>
+</body>
+</html>

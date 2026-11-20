@@ -1,0 +1,3 @@
+# Copy to .dev.vars for local dev only. Never commit .dev.vars.
+# Skips the Cloudflare Access check, but ONLY for requests to localhost/127.0.0.1.
+DEV_ONLY_SKIP_ACCESS_CHECK=1
