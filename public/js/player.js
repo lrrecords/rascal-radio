@@ -23,7 +23,7 @@ function loadYouTubeApi() {
 }
 
 export function bandcampSrc(embedId) {
-  return `https://bandcamp.com/EmbeddedPlayer/${embedId}/size=small/bgcol=0b0b0b/linkcol=ff4d2e/artwork=none/transparent=true/`;
+  return `https://bandcamp.com/EmbeddedPlayer/${embedId}/size=small/bgcol=0b0b0b/linkcol=fcbc4b/artwork=none/transparent=true/`;
 }
 
 export class QueuePlayer {

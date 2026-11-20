@@ -23,7 +23,7 @@ export async function onRequestGet(context) {
       `<meta property="og:title" content="${escapeHtml(show.title)}">`,
       `<meta property="og:description" content="${escapeHtml(desc.slice(0, 300))}">`,
       `<meta property="og:url" content="${escapeHtml(url)}">`,
-      art?.art_url ? `<meta property="og:image" content="${escapeHtml(art.art_url)}">` : '',
+      `<meta property="og:image" content="${escapeHtml(art?.art_url || new URL('/img/og-default.png', request.url).toString())}">`,
       `<meta name="twitter:card" content="summary_large_image">`,
       `<link rel="alternate" type="application/json+oembed" href="${escapeHtml(new URL(`/embed/${encodeURIComponent(slug)}`, request.url).toString())}">`,
     ].join('\n    ');
