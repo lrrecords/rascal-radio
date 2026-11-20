@@ -16,5 +16,5 @@ migrations_dir = "migrations"
 # Cloudflare Access (Zero Trust) settings used to verify admin requests.
 # Team domain, e.g. "lrrecords.cloudflareaccess.com". The AUD tag comes from the
 # Access application's Overview tab. Neither is a secret.
-ACCESS_TEAM_DOMAIN = ""
-ACCESS_AUD = ""
+ACCESS_TEAM_DOMAIN = "calm-pond-4784.cloudflareaccess.com"
+ACCESS_AUD = "d793506c14fa074ab4c0357c8e5c45e45a181ea6cdc27f500d67f6f816b8375f"
