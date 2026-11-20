@@ -100,11 +100,11 @@ Then open http://127.0.0.1:8790/embed-test.html.
    ```bash
    npx wrangler d1 migrations apply rascal_radio --remote
    ```
-3. **Create the Pages project:** Cloudflare dashboard → *Workers & Pages* → *Create* → *Pages* → *Connect to Git* → pick `lrrecords/rascal-radio`.
+3. **Create the Pages project:** Cloudflare dashboard → *Workers & Pages* → *Create* → at the bottom, *Continue to Pages* (the main Create flow now makes a **Worker**, which fails with "you've run a Workers-specific command in a Pages project") → *Import an existing Git repository* → pick `lrrecords/rascal-radio`.
    - Production branch: `main`
    - Framework preset: *None*. Build command: *(leave empty)*. Build output directory: `public`
    - The D1 binding (`DB`) and vars come from `wrangler.toml`, so there's nothing to add under Settings → Bindings.
-4. Every push to `main` deploys to production. Other branches get preview URLs (`<branch>.rascal-radio.pages.dev`).
+4. Every push to `main` deploys to production. If the Deployments tab says the project is *disconnected from your Git account*, reconnect it under Settings → Build → Git repository (and check the Cloudflare app's repo access on GitHub), or merges won't deploy. Other branches get preview URLs (`<branch>.rascal-radio.pages.dev`).
 
 ## Lock down admin: Cloudflare Access policy
 
