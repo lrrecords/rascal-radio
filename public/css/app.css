@@ -6,7 +6,7 @@
   --line: #2a2a2a;
   --text: #f2efe6;
   --muted: #9c978b;
-  --accent: #ff4d2e;
+  --accent: #fcbc4b;  /* Rascal Radio logo amber */
   --accent-ink: #0a0a0a;
   --danger: #ff6b6b;
   --ok: #7bd88f;
@@ -39,7 +39,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .site-head { border-bottom: 1px solid var(--line); }
 .site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 56px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.brand-mark { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); display: grid; place-items: center; color: var(--accent-ink); font-weight: 900; font-size: 14px; }
+.brand-mark { width: 32px; height: 28px; flex: none; display: block; }
 .brand-name { font-family: var(--display); font-weight: 800; letter-spacing: .04em; text-transform: uppercase; font-stretch: condensed; }
 .brand-sub { display: block; font-size: .7rem; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; }
 .site-foot { color: var(--muted); font-size: .8rem; padding: 32px 0; border-top: 1px solid var(--line); margin-top: 48px; }
@@ -93,7 +93,7 @@ h2 { font-size: 1.3rem; }
   display: grid; grid-template-columns: 28px 52px 1fr auto; align-items: center; gap: 12px;
   padding: 10px 4px; border-bottom: 1px solid var(--line);
 }
-.track.now { background: linear-gradient(90deg, rgba(255,77,46,.12), transparent 70%); }
+.track.now { background: linear-gradient(90deg, rgba(252,188,75,.12), transparent 70%); }
 .track .pos { color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; font-size: .9rem; }
 .track.now .pos { color: var(--accent); font-weight: 700; }
 .track .art-btn { position: relative; width: 52px; height: 52px; padding: 0; border: 0; border-radius: 6px; overflow: hidden; background: var(--surface-2); cursor: pointer; }
