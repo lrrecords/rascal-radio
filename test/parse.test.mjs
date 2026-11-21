@@ -1,7 +1,7 @@
 // Offline unit tests for the HTML parsers: node --test
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { parseBandcampHtml, youTubeId, splitYouTubeTitle, isoDurationToSeconds, detectSource } from '../lib/resolve.js';
+import { parseBandcampHtml, youTubeId, splitYouTubeTitle, isoDurationToSeconds, detectSource, parseYouTubeLength } from '../lib/resolve.js';
 import { parseCrate } from '../lib/crate.js';
 
 const albumHtml = `
@@ -70,4 +70,12 @@ test('Indiecrates crate parsing', () => {
   assert.equal(c.title, 'Rascal Radio - Oct 26');
   assert.equal(c.items.length, 2);
   assert.deepEqual(c.items[1], { url: 'https://liveconformdie.bandcamp.com/album/die-in-my-prime', title: 'Who Have I Been Praying To?', artist: 'liveconformdie' });
+});
+
+test('YouTube length from player data', () => {
+  assert.equal(parseYouTubeLength({ videoDetails: { lengthSeconds: '213' } }), 213);
+  assert.equal(parseYouTubeLength({ videoDetails: { lengthSeconds: '0' } }), null);
+  assert.equal(parseYouTubeLength({ playabilityStatus: { status: 'ERROR' } }), null);
+  assert.equal(parseYouTubeLength(null), null);
+  assert.equal(youTubeId('https://music.youtube.com/watch?v=5dBJbXo5GB4&si=abc'), '5dBJbXo5GB4');
 });
