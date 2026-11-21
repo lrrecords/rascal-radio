@@ -65,6 +65,7 @@ const player = new QueuePlayer(document.getElementById('player'), {
   },
 });
 window.rrPlayer = player; // handy for debugging in the console
+player.setQueue(tracks);
 document.getElementById('play').addEventListener('click', () => player.load(tracks, 0));
 document.getElementById('shuffle').addEventListener('click', () => player.load(shuffled(tracks), 0));
 document.getElementById('tracks').addEventListener('click', (e) => {

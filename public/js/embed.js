@@ -37,14 +37,7 @@ if (size === 'compact') {
   // Show the first track ready to go, with a big Play affordance.
   player.el.title.textContent = first ? first.title : 'Empty show';
   player.el.artist.textContent = first ? `${first.artist || ''} · ${tracks.length} tracks` : '';
-  const ctrl = player.root.querySelector('.rp-ctrl');
-  const start = document.createElement('button');
-  start.type = 'button';
-  start.className = 'btn btn-primary btn-icon';
-  start.setAttribute('aria-label', 'Play the show');
-  start.innerHTML = ICONS.play;
-  start.addEventListener('click', () => { start.remove(); player.load(tracks, 0); });
-  ctrl.prepend(start);
+  player.setQueue(tracks); // the player's own ▶ starts the show from track 1
   player.setStatus(`${tracks.length} tracks · Bandcamp &amp; YouTube`);
 } else {
   root.innerHTML = `
