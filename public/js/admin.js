@@ -1,5 +1,6 @@
 // /admin — create/edit shows, resolve links, reorder, publish.
 import { api, esc, fmtDur, parseDur, ICONS, toast } from './common.js';
+import { youTubeDuration } from './yt-duration.js';
 
 const $ = (id) => document.getElementById(id);
 const form = $('show-form');
@@ -71,12 +72,30 @@ async function openShow(id) {
   fillForm(show);
   renderOrder();
   setDirty(false);
+  fillYouTubeTimes();
   history.replaceState(null, '', `/admin?show=${id}`);
   loadList();
 }
 
 form.addEventListener('input', () => setDirty());
 form.addEventListener('submit', (e) => { e.preventDefault(); save(); });
+
+// ---------- YouTube times the server couldn't get ----------
+const ytTried = new Set();
+async function fillYouTubeTimes() {
+  for (const o of state.order) {
+    const t = o.track;
+    if (t.source !== 'youtube' || t.duration_s || ytTried.has(t.id)) continue;
+    ytTried.add(t.id);
+    const d = await youTubeDuration(t.embed_id).catch(() => null);
+    if (!d) continue;
+    try {
+      const { track } = await api(`/api/admin/tracks/${t.id}`, { method: 'PUT', body: { duration_s: d } });
+      for (const x of state.order) if (x.track.id === track.id) x.track = track;
+      renderOrder();
+    } catch { /* leave it blank; it can be typed in by hand */ }
+  }
+}
 
 // ---------- running order ----------
 function renderOrder() {
@@ -193,6 +212,7 @@ $('resolve').addEventListener('click', async () => {
       const { track } = await api('/api/admin/tracks', { method: 'POST', body: meta });
       state.order.push({ track, segment_note: '' });
       renderOrder(); setDirty();
+      fillYouTubeTimes();
       li.innerHTML = `${track.art_url ? `<img src="${esc(track.art_url)}" alt="">` : ''}<div><div><span class="ok">✓</span> ${esc(track.title)} — ${esc(track.artist || '')} <span class="muted">${fmtDur(track.duration_s)}</span></div><div class="u">${esc(url)}</div></div>`;
     } catch (err) {
       failed.push(url);
