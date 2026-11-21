@@ -5,7 +5,7 @@ Self-hosted playlist pages for **Rascal Radio** by Little Rascal Records — a r
 - Static HTML/CSS/vanilla JS on **Cloudflare Pages** (no framework, no build step)
 - API in **Pages Functions** (`/functions`), data in **Cloudflare D1** (`rascal_radio`)
 - `/admin` locked by **Cloudflare Access** (free tier) — no login code in the app
-- Music plays only through the **official Bandcamp embedded player** and the **YouTube IFrame player**. Audio is never extracted or proxied.
+- Bandcamp tracks play from Bandcamp's own streaming links (looked up on demand, never proxied or stored), falling back to the official Bandcamp embed; YouTube tracks play in the YouTube IFrame player.
 
 ## What's where
 
@@ -31,12 +31,12 @@ test/              offline parser tests + embed-test.html
 
 ## How the player works
 
-- The sticky player plays the show's queue in order and swaps between the Bandcamp embed and the YouTube player per track.
-- **YouTube** reports when a video ends, so the queue moves on by itself.
-- **Bandcamp's embed doesn't report when a track ends** (and a cross-origin iframe can't be watched), so for Bandcamp tracks the **Next ⏭** button is highlighted and the player says so. The visitor also presses ▶ inside the Bandcamp player, because Bandcamp doesn't allow autoplay.
-- YouTube requires its player to be at least 200×200px, so it shows as a small floating video above the bar. The **compact** embed (152px tall) is too small for that, so YouTube tracks there show a "watch on YouTube" link (and a link to the full player). Bandcamp tracks play inline in both embed sizes.
-- Album links resolve to **one track** of the album (track 1, or the track whose title matches a hint; the import sends the Indiecrates row title as that hint). Bandcamp's embed for `album=…/track=…` starts on that track.
-- YouTube oEmbed has no duration, so YouTube tracks start with a blank time. The player fills it in while playing, or you can type it in `/admin` (m:ss).
+- Press play on any track (or Play / Shuffle) and the show plays straight through until the listener pauses. One play/pause button, a progress bar, and Next/Previous control every track; phones also get lock-screen controls.
+- **Bandcamp tracks** play in the page's own audio player from Bandcamp's streaming link (the same link Bandcamp's own pages use, as Indiecrates does). `GET /api/stream/:trackId` looks the link up on the track's Bandcamp page and **redirects** the browser to it; the audio never passes through this app. Links expire, so they're cached at the edge for an hour, not stored. This isn't an official Bandcamp feature: if Bandcamp refuses, that track falls back to the official Bandcamp embedded player (press play in it, then Next).
+- **YouTube tracks** play in the YouTube IFrame player, which reports when a video ends. YouTube requires the player to be at least 200x200px, so it shows as a small floating video above the bar. The **compact** embed (152px tall) is too small for that, so YouTube tracks there show a "watch on YouTube" link.
+- If the browser blocks a track from starting by itself (some phones after a long pause), the player says "Press play to keep listening".
+- Album links resolve to **one track** of the album (track 1, or the track whose title matches a hint; the import sends the Indiecrates row title as that hint).
+- Track lengths: Bandcamp gives them; YouTube lengths come from YouTube's player data, and `/admin` fills any still missing in the browser.
 
 ## Local development
 

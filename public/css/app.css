@@ -125,6 +125,12 @@ h2 { font-size: 1.3rem; }
 .rp-next.attn { border-color: var(--accent); color: var(--accent); }
 .rp-status { font-size: .78rem; color: var(--muted); min-height: 1em; }
 .rp-status a { color: var(--accent); }
+.rp-toggle { width: 48px; min-height: 48px !important; border-radius: 50%; }
+.rp-toggle svg { width: 22px; height: 22px; }
+.rp-prog { display: grid; grid-template-columns: auto 1fr auto; gap: 10px; align-items: center; font-size: .75rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.rp-prog[hidden] { display: none; }
+.rp-seek { width: 100%; accent-color: var(--accent); height: 4px; margin: 0; }
+.rp-audio { display: none; }
 .rp-bc iframe { display: block; width: 100%; height: 42px; border: 0; }
 .rp-yt { position: absolute; right: 16px; bottom: calc(100% + 8px); width: 200px; height: 200px; background: #000; border-radius: 8px; overflow: hidden; box-shadow: 0 8px 30px rgba(0,0,0,.6); border: 1px solid var(--line); }
 .rp-yt iframe, .rp-yt > div { width: 200px; height: 200px; display: block; }
